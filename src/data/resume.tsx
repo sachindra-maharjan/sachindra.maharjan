@@ -249,7 +249,6 @@ export const DATA = {
           icon: <Icons.globe className="h-4 w-4" />,
           href: 'https://www.credential.net/ca8ce4d5-10e4-4084-b094-893a1e2b16fd',
         },
-        ,
       ],
     },
   ],
