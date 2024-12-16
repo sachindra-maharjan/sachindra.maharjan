@@ -7,7 +7,7 @@ import { Suspense } from 'react';
 import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
 import { Icons } from '@/components/icons';
-import Divider from '@/components/divider';
+import { Divider } from '@/components/divider';
 
 type Params = Promise<{ slug: string }>;
 
@@ -106,7 +106,7 @@ export default async function Blog({ params }: { params: Params }) {
         dangerouslySetInnerHTML={{ __html: post.source }}
       ></article>
 
-      <div className='mb-8 mt-8'>
+      <div className="mb-8 mt-8">
         <Divider/>
       </div>
           
