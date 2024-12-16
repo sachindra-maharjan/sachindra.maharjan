@@ -26,7 +26,7 @@ export default async function BlogPage() {
     <section>
       {
       categories.map(category => (
-        <div className="w-full">
+        <div className="w-full" key={category}>
           <BlurFade delay={BLUR_FADE_DELAY} key={category}>
           <h1 className="font-medium text-2xl mb-1 tracking-tighter">{category}</h1>
           <ul className="mb-2 divide-y divide-dashed">
@@ -45,6 +45,7 @@ export default async function BlogPage() {
             <Link
                   className="flex flex-col space-y-1 mb-1"
                   href={`/blog/${post.slug}`}
+                  key={id}
                 >
               <BlogPostCard
                 title={post.metadata.title}
