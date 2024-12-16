@@ -1,3 +1,5 @@
+import { BlogPostCard } from "@/components/blog-post";
+import { Icons } from "@/components/icons";
 import BlurFade from "@/components/magicui/blur-fade";
 import { getBlogPosts } from "@/data/blog";
 import Link from "next/link";
@@ -24,9 +26,11 @@ export default async function BlogPage() {
     <section>
       {
       categories.map(category => (
-        <BlurFade delay={BLUR_FADE_DELAY} key={category}>
-        <h1 className="font-medium text-2xl mb-8 tracking-tighter">{category}</h1>
-        {
+        <div className="w-full">
+          <BlurFade delay={BLUR_FADE_DELAY} key={category}>
+          <h1 className="font-medium text-2xl mb-1 tracking-tighter">{category}</h1>
+          <ul className="mb-2 divide-y divide-dashed">
+          {
           posts
           .sort((a, b) => {
             if (
@@ -38,24 +42,21 @@ export default async function BlogPage() {
           })
           .filter((post) => post.metadata.category === category)
           .map((post, id) => (
-            <div style={{ marginLeft: '10px' }} key={id}>
-              <BlurFade delay={BLUR_FADE_DELAY * 2 + id * 0.05} key={post.slug}>
-                <Link
-                  className="flex flex-col space-y-1 mb-4"
+            <Link
+                  className="flex flex-col space-y-1 mb-1"
                   href={`/blog/${post.slug}`}
                 >
-                  <div className="w-full flex flex-col">
-                    <p className="tracking-tight">{post.metadata.title}</p>
-                    <p className="h-6 text-xs text-muted-foreground">
-                      {post.metadata.publishedAt}
-                    </p>
-                  </div>
-                </Link>
-              </BlurFade>
-            </div>
-          ))
-        }
-        </BlurFade>
+              <BlogPostCard
+                title={post.metadata.title}
+                date={post.metadata.publishedAt}
+                description={post.metadata.summary}
+              />
+              </Link>
+            ))
+          }
+          </ul>
+          </BlurFade>
+        </div>
       ))
     }
     </section>

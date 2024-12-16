@@ -4,6 +4,10 @@ import { formatDate } from '@/lib/utils';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { Suspense } from 'react';
+import Link from "next/link";
+import { Badge } from "@/components/ui/badge";
+import { Icons } from '@/components/icons';
+import Divider from '@/components/divider';
 
 type Params = Promise<{ slug: string }>;
 
@@ -94,10 +98,31 @@ export default async function Blog({ params }: { params: Params }) {
           </p>
         </Suspense>
       </div>
+
+      <Divider/>
+      
       <article
         className="prose dark:prose-invert"
         dangerouslySetInnerHTML={{ __html: post.source }}
       ></article>
+
+      <div className='mb-8 mt-8'>
+        <Divider/>
+      </div>
+          
+      <div className="mt-4 mb-2">
+        {post.metadata.url && (
+          <div className="mt-2 flex flex-row flex-wrap items-start gap-2">
+            <Link href={post.metadata.url} key={post.metadata.url}>
+              <Badge key={post.metadata.url} title={"GitHub"} className="flex gap-2">
+                <Icons.github className="size-3" />
+                {"GitHub"}
+              </Badge>
+            </Link>
+            
+          </div>
+        )}
+      </div>
     </section>
   );
 }
