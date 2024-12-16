@@ -113,7 +113,7 @@ export default async function Blog({ params }: { params: Params }) {
       <div className="mt-4 mb-2">
         {post.metadata.url && (
           <div className="mt-2 flex flex-row flex-wrap items-start gap-2">
-            <Link href={post.metadata.url} key={post.metadata.url}>
+            <Link href={post.metadata.url} key={post.metadata.url} target="_blank">
               <Badge key={post.metadata.url} title={"GitHub"} className="flex gap-2">
                 <Icons.github className="size-3" />
                 {"GitHub"}
