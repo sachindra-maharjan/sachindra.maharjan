@@ -71,7 +71,7 @@ export default async function TopicPage() {
           })
           .filter((post) => post.metadata.category === category)
           .map((post, id) => (
-            <div style={{ marginLeft: '10px' }}>
+            <div style={{ marginLeft: '10px' }} key={id}>
               <BlurFade delay={BLUR_FADE_DELAY * 2 + id * 0.05} key={post.slug}>
                 <Link
                   className="flex flex-col space-y-1 mb-4"
