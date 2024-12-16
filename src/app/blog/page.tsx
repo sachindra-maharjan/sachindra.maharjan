@@ -57,7 +57,7 @@ export default async function TopicPage() {
     <section>
       {
       categories.map(category => (
-        <BlurFade delay={BLUR_FADE_DELAY}>
+        <BlurFade delay={BLUR_FADE_DELAY} key={category}>
         <h1 className="font-medium text-2xl mb-8 tracking-tighter">{category}</h1>
         {
           posts
